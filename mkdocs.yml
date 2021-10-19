@@ -1,0 +1,13 @@
+site_name: Devnetes - AppDev approaches for k8s cooperation
+nav:
+  - Home: index.md
+  - Concepts: concepts/index.md
+  - Tools: tools/index.md
+theme:
+  name: 'material'
+markdown_extensions:
+  - admonition
+  - pymdownx.superfences
+  - pymdownx.details
+  - attr_list
+ 

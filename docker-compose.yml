@@ -1,0 +1,17 @@
+version: '3'
+services:
+  docs:
+    image: krumware/devnetes-docs:master
+    build: .
+    # volumes:
+    #   - "./:/src"
+    ports:
+      - 8000:8000
+    environment:
+      - PORT=8000
+    networks:
+      - web
+
+networks:
+  web:
+    driver: bridge
