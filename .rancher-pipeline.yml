@@ -5,7 +5,6 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: ${CICD_GIT_REPO_NAME}:${CICD_GIT_BRANCH}
-      registry: 127.0.0.1:34035
     env:
       PLUGIN_CUSTOM_DNS: 8.8.8.8,8.8.4.4
 timeout: 60
