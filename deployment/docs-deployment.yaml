@@ -31,7 +31,7 @@ spec:
         - env:
             - name: PORT
               value: "8000"
-          image: ${CICD_IMAGE}
+          image: ${CICD_IMAGE}:${CICD_GIT_BRANCH}
           name: docs
           ports:
             - containerPort: 8000
