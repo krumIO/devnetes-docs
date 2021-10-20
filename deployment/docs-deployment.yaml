@@ -25,6 +25,8 @@ spec:
         io.kompose.network/web: "true"
         io.kompose.service: docs
     spec:
+      imagePullSecrets:
+      - name: pipeline-docker-registry
       containers:
         - env:
             - name: PORT
