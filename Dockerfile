@@ -4,12 +4,12 @@
 FROM python:3
 LABEL maintainer="Colin Griffin <colin@krum.io>"
 
-RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
-RUN update-ca-certificates
+# RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
+# RUN update-ca-certificates
 # RUN apk update
 # RUN apk upgrade
-RUN apk add ca-certificates
-RUN apk add build-base bash
+# RUN apk add ca-certificates
+# RUN apk add build-base bash
 
 RUN pip3 install --upgrade pip \
 	&& pip3 install mkdocs \
