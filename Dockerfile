@@ -2,6 +2,8 @@
 FROM python:3-alpine
 LABEL maintainer="Colin Griffin <colin@krum.io>"
 
+# RUN apk update
+# RUN apk upgrade
 RUN apk add ca-certificates
 RUN apk add build-base bash
 
