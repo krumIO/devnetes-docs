@@ -4,10 +4,10 @@
 FROM python:3-alpine
 LABEL maintainer="Colin Griffin <colin@krum.io>"
 
+RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
 RUN update-ca-certificates
 # RUN apk update
 # RUN apk upgrade
-# RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
 RUN apk add ca-certificates
 RUN apk add build-base bash
 
