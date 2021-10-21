@@ -1,7 +1,7 @@
 # Update certificates
 
 # Devnetes Docs Site
-FROM python:3-alpine
+FROM python:3
 LABEL maintainer="Colin Griffin <colin@krum.io>"
 
 RUN wget https://dl-cdn.alpinelinux.org/alpine/v3.14/main/x86_64/APKINDEX.tar.gz
