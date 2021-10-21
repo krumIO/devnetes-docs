@@ -2,7 +2,7 @@
 FROM python:3-alpine
 LABEL maintainer="Colin Griffin <colin@krum.io>"
 
-RUN apk add ca-certificates
+RUN update-ca-certificates
 RUN apk add build-base bash
 
 RUN pip3 install --upgrade pip \
