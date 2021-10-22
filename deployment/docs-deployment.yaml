@@ -80,7 +80,7 @@ spec:
       paths:
       - backend:
           serviceName: docs-${CICD_GIT_BRANCH}
-          servicePort: "8000"
+          servicePort: 8000
         pathType: ImplementationSpecific
   tls:
   - hosts:
