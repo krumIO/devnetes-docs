@@ -6,14 +6,14 @@ metadata:
     kompose.version: 1.24.0 (HEAD)
   creationTimestamp: null
   labels:
-    io.kompose.service: docs
+    io.kompose.service: docs-${CICD_GIT_BRANCH}
   name: docs-${CICD_GIT_BRANCH}
   namespace: development
 spec:
   replicas: 1
   selector:
     matchLabels:
-      io.kompose.service: docs
+      io.kompose.service: docs-${CICD_GIT_BRANCH}
   strategy: {}
   template:
     metadata:
@@ -24,7 +24,7 @@ spec:
       creationTimestamp: null
       labels:
         io.kompose.network/web: "true"
-        io.kompose.service: docs
+        io.kompose.service: docs-${CICD_GIT_BRANCH}
     spec:
       imagePullSecrets:
         - name: pipeline-docker-registry
@@ -33,7 +33,7 @@ spec:
             - name: PORT
               value: "8000"
           image: ${CICD_IMAGE}:${CICD_GIT_BRANCH}
-          name: docs
+          name: docs-${CICD_GIT_BRANCH}
           ports:
             - containerPort: 8000
           resources: {}
@@ -48,8 +48,8 @@ metadata:
     kompose.version: 1.24.0 (HEAD)
   creationTimestamp: null
   labels:
-    io.kompose.service: docs
-  name: docs
+    io.kompose.service: docs-${CICD_GIT_BRANCH}
+  name: docs-${CICD_GIT_BRANCH}
   namespace: development
 spec:
   ports:
@@ -57,6 +57,34 @@ spec:
       port: 8000
       targetPort: 8000
   selector:
-    io.kompose.service: docs
+    io.kompose.service: docs-${CICD_GIT_BRANCH}
+status:
+  loadBalancer: {}
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    cert-manager.io/cluster-issuer: letsencrypt-production
+    kompose.cmd: kompose convert
+    kompose.version: 1.24.0 (HEAD)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: docs-${CICD_GIT_BRANCH}
+  name: docs-${CICD_GIT_BRANCH}
+  namespace: development
+spec:
+  rules:
+  - host: ${CICD_GIT_BRANCH}.devnetes.com
+    http:
+      paths:
+      - backend:
+          serviceName: docs-${CICD_GIT_BRANCH}
+          servicePort: "8000"
+        pathType: ImplementationSpecific
+  tls:
+  - hosts:
+    - ${CICD_GIT_BRANCH}.devnetes.com
+    secretName: crt-devnetes-com-${CICD_GIT_BRANCH}
 status:
   loadBalancer: {}
