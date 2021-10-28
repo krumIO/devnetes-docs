@@ -1,8 +1,6 @@
 # Devnetes Docs Site
-FROM python:3.7.2-alpine3.9
+FROM python:3
 LABEL maintainer="Colin Griffin <colin@krum.io>"
-
-RUN apk add build-base bash
 
 RUN pip3 install --upgrade pip \
 	&& pip3 install mkdocs \
